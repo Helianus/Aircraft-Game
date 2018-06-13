@@ -5,7 +5,7 @@ def game_Runner():
     
     pygame.init()                                   # Initialize
     screen = pygame.display.set_mode((1080, 720))   # create a screen
-    pygame.display.set_caption("Game")              # set the title of the window
+    pygame.display.set_caption("Aircraft Game")              # set the title of the window
 
     background_color = (100, 100, 100)              # set the background color
 
