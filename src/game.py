@@ -1,14 +1,20 @@
 import sys
 import pygame
 
+from setting import Setting
+from aircraft import Aircraft
+
 def game_Runner():
     
     pygame.init()                                   # Initialize
-    screen = pygame.display.set_mode((1080, 720))   # create a screen
-    pygame.display.set_caption("Aircraft Game")              # set the title of the window
+    
+    game_settings = Setting()
+    screen = pygame.display.set_mode(
+        (game_settings.screen_width, game_settings.screen_height))
+    pygame.display.set_caption("Aircraft Game")
 
-    background_color = (100, 100, 100)              # set the background color
-
+    # create an aircraft
+    aircraft = Aircraft(screen)    
     # loop of processing
     while True:
 
@@ -19,8 +25,10 @@ def game_Runner():
             if event.type == pygame.QUIT:
                 sys.exit()
         
-        screen.fill(background_color)               # fill the color during the loop
+        screen.fill(game_settings.background_color)               # fill the color during the loop
 
+        aircraft.blit_image()
+        
         pygame.display.flip()                       # update the most recently screen activity
 
 game_Runner()
