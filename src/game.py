@@ -1,5 +1,6 @@
 import sys
 import pygame
+import functions as function
 
 from setting import Setting
 from aircraft import Aircraft
@@ -14,21 +15,13 @@ def game_Runner():
     pygame.display.set_caption("Aircraft Game")
 
     # create an aircraft
-    aircraft = Aircraft(screen)    
+    aircraft = Aircraft(game_settings, screen)    
     # loop of processing
     while True:
 
-        # loop of listerning event: keyboard and mouse
-        for event in pygame.event.get():
-            
-            # quit event
-            if event.type == pygame.QUIT:
-                sys.exit()
+        function.check_events(aircraft)
+        aircraft.update()
         
-        screen.fill(game_settings.background_color)               # fill the color during the loop
-
-        aircraft.blit_image()
-        
-        pygame.display.flip()                       # update the most recently screen activity
+        function.update_screen(game_settings, screen, aircraft)
 
 game_Runner()

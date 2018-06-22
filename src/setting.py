@@ -6,3 +6,6 @@ class Setting():
         self.screen_width = 1080
         self.screen_height = 720
         self.background_color = (255, 255, 255)
+
+        # aircraft settings
+        self.aircraft_speed_factor = 1.5
