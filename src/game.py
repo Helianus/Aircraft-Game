@@ -1,7 +1,7 @@
 import sys
 import pygame
 import functions as function
-
+from pygame.sprite import Group
 from setting import Setting
 from aircraft import Aircraft
 
@@ -15,13 +15,16 @@ def game_Runner():
     pygame.display.set_caption("Aircraft Game")
 
     # create an aircraft
-    aircraft = Aircraft(game_settings, screen)    
+    aircraft = Aircraft(game_settings, screen)
+    missiles = Group()
+
     # loop of processing
     while True:
 
-        function.check_events(aircraft)
+        function.check_events(game_settings, screen, aircraft, missiles)
         aircraft.update()
+        missiles.update()
         
-        function.update_screen(game_settings, screen, aircraft)
+        function.update_screen(game_settings, screen, aircraft, missiles)
 
 game_Runner()
